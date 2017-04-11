@@ -56,11 +56,19 @@ class Game extends Component {
       const desc = step.moveLocation ?
         'Move (' + step.moveLocation + ')':
         'Game start';
-      return (
-        <li key={move}>
-          <a href="#" onClick={() => this.jumpTo(move)}>{desc}</a>
-        </li>
-      );
+      if (move === this.state.stepNumber) {
+        return (
+          <li key={move}>
+            <a href="#" onClick={() => this.jumpTo(move)}><strong>{desc}</strong></a>
+          </li>
+        );
+      } else {
+        return (
+          <li key={move}>
+            <a href="#" onClick={() => this.jumpTo(move)}>{desc}</a>
+          </li>
+        );
+      }
     });
 
     return (
